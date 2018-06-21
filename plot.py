@@ -24,6 +24,7 @@ if __name__ == "__main__":
     
     res = pd.DataFrame([json.loads(l) for l in open(args.inpath)])
     max_entry = res.max_entry[0]
+    eps       = res.eps[0]
     
     # --
     # Plot runtime
@@ -35,7 +36,7 @@ if __name__ == "__main__":
     _ = plt.legend()
     _ = plt.ylabel('seconds')
     _ = plt.xlabel('dim')
-    _ = plt.title('Run time (max_entry=%d)' % max_entry)
+    _ = plt.title('Run time (max_entry=%d | eps=%s)' % (max_entry, str(eps)))
     show_plot(outpath='time.png')
     
     # --
@@ -47,7 +48,7 @@ if __name__ == "__main__":
     _ = plt.plot(res.dim, 1 - res.gat_score / best_score, label='gat')
     _ = plt.plot(res.dim, 1 - res.src_score / best_score, label='src')
     _ = plt.legend()
-    _ = plt.ylabel('error (pct)')
+    _ = plt.ylabel('error (score / best_score)')
     _ = plt.xlabel('dim')
-    _ = plt.title('Score (max_entry=%d)' % max_entry)
+    _ = plt.title('Score (max_entry=%d | eps=%s)' % (max_entry, str(eps)))
     show_plot(outpath='score.png')

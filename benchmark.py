@@ -64,6 +64,7 @@ if __name__ == '__main__':
         print(json.dumps({
                 "max_entry"     : int(args.max_entry),
                 "dim"           : int(dim),
+                "eps"           : float(args.eps) if args.eps is not None else None,
                 
                 "gat_score"     : int(gat_score),
                 "src_score"     : int(src_score),

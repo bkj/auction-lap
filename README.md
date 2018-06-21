@@ -2,6 +2,10 @@
 
 Linear Assignment Problem (LAP) solver using the auction algorithm.  Implemented in `pytorch`, runs on CPU or GPU.
 
+Runtime scales w/
+ - the dimension of the matrix
+ - the range of entries in the matrix (max value - min value)
+
 ##### Installation
 
 ```
