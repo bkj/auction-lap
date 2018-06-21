@@ -33,9 +33,11 @@ if __name__ == '__main__':
     
     np.random.seed(args.seed)
     
+    X_all = np.random.choice(args.max_entry, (args.max_dim, args.max_dim))
+    
     for dim in np.linspace(args.min_dim, args.max_dim, args.n_evals, dtype=int):
         
-        X = np.random.choice(args.max_entry, (dim, dim))
+        X = X_all[:dim,:dim]
         
         t = time()
         _, gat_ass, _ = jv_gat(X.max() - X)
