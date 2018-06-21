@@ -13,7 +13,24 @@ conda install pytorch==0.3.1 torchvision cuda91 -c pytorch -y
 
 ##### Usage
 
-See `./run.sh` for usage
+```
+usage: benchmark.py [-h] [--max-entry MAX_ENTRY] [--min-dim MIN_DIM]
+                    [--max-dim MAX_DIM] [--n-evals N_EVALS] [--eps EPS]
+                    [--seed SEED]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --max-entry MAX_ENTRY
+                        maximum entry in matrix
+  --min-dim MIN_DIM     minimum dimension matrix to test
+  --max-dim MAX_DIM     maximum dimension matrix to test
+  --n-evals N_EVALS     number of steps between min and max matrix size
+  --eps EPS             "bid size" -- smaller values give better accuracy w/
+                        longer runtime
+  --seed SEED           random seed
+```
+
+See `./run.sh` for examples.
 
 ##### To Do
 

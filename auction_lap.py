@@ -12,6 +12,11 @@ from __future__ import print_function, division
 import torch
 
 def auction_lap(X, eps=None):
+    """
+        X: n-by-n matrix w/ integer entries
+        eps: "bid size" -- smaller values means higher accuracy w/ longer runtime
+    """
+    
     eps = 1 / X.shape[0] if eps is None else eps
     
     # --
