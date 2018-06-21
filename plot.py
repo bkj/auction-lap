@@ -28,7 +28,7 @@ if __name__ == "__main__":
     # --
     # Plot runtime
     
-    _ = plt.plot(res.dim, res.auc_cpu_time, label='auc_cpu')
+    # _ = plt.plot(res.dim, res.auc_cpu_time, label='auc_cpu')
     _ = plt.plot(res.dim, res.auc_gpu_time, label='auc_gpu')
     _ = plt.plot(res.dim, res.gat_time, label='gat')
     _ = plt.plot(res.dim, res.src_time, label='src')
@@ -41,13 +41,13 @@ if __name__ == "__main__":
     # --
     # Plot accuracy
     
-    mean_score = res[['auc_cpu_score', 'auc_gpu_score', 'gat_score', 'src_score']].values.mean(axis=-1)
-    _ = plt.plot(res.dim, res.auc_cpu_score - mean_score, label='auc_cpu')
-    _ = plt.plot(res.dim, res.auc_gpu_score - mean_score, label='auc_gpu')
-    _ = plt.plot(res.dim, res.gat_score - mean_score, label='gat')
-    _ = plt.plot(res.dim, res.src_score - mean_score, label='src')
+    best_score = res.gat_score.values
+    # _ = plt.plot(res.dim, 1 - res.auc_cpu_score / best_score, label='auc_cpu')
+    _ = plt.plot(res.dim, 1 - res.auc_gpu_score / best_score, label='auc_gpu')
+    _ = plt.plot(res.dim, 1 - res.gat_score / best_score, label='gat')
+    _ = plt.plot(res.dim, 1 - res.src_score / best_score, label='src')
     _ = plt.legend()
-    _ = plt.ylabel('score (deviation from mean)')
+    _ = plt.ylabel('error (pct)')
     _ = plt.xlabel('dim')
     _ = plt.title('Score (max_entry=%d)' % max_entry)
     show_plot(outpath='score.png')

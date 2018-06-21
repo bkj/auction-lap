@@ -53,9 +53,9 @@ if __name__ == '__main__':
         Xt_cpu = torch.from_numpy(X).float()
         Xt_gpu = Xt_cpu.cuda()
         
-        t = time()
-        auc_cpu_score, auc_cpu_ass = auction_lap(Xt_cpu, eps=args.eps) # Score is accurate to within n * eps
-        auc_cpu_time = time() - t
+        # t = time()
+        # auc_cpu_score, auc_cpu_ass = auction_lap(Xt_cpu, eps=args.eps) # Score is accurate to within n * eps
+        # auc_cpu_time = time() - t
         
         t = time()
         auc_gpu_score, auc_gpu_ass = auction_lap(Xt_gpu, eps=args.eps) # Score is accurate to within n * eps
@@ -67,12 +67,12 @@ if __name__ == '__main__':
                 
                 "gat_score"     : int(gat_score),
                 "src_score"     : int(src_score),
-                "auc_cpu_score" : int(auc_cpu_score),
+                # "auc_cpu_score" : int(auc_cpu_score),
                 "auc_gpu_score" : int(auc_gpu_score),
                 
                 "gat_time"      : float(gat_time),
                 "src_time"      : float(src_time),
-                "auc_cpu_time"  : float(auc_cpu_time),
+                # "auc_cpu_time"  : float(auc_cpu_time),
                 "auc_gpu_time"  : float(auc_gpu_time),
         }))
         sys.stdout.flush()
