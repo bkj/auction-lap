@@ -4,11 +4,15 @@
     plot.py
 """
 
+from __future__ import print_function
+
+import sys
 import json
 import argparse
 import pandas as pd
 
-from rsub import *
+import matplotlib
+matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 
 
@@ -37,7 +41,8 @@ if __name__ == "__main__":
     _ = plt.ylabel('seconds')
     _ = plt.xlabel('dim')
     _ = plt.title('Run time (max_entry=%d | eps=%s)' % (max_entry, str(eps)))
-    show_plot(outpath='time.png')
+    print('plot.py: saving time.png', file=sys.stderr)
+    plt.savefig('time.png')
     
     # --
     # Plot accuracy
@@ -51,4 +56,5 @@ if __name__ == "__main__":
     _ = plt.ylabel('error (score / best_score)')
     _ = plt.xlabel('dim')
     _ = plt.title('Score (max_entry=%d | eps=%s)' % (max_entry, str(eps)))
-    show_plot(outpath='score.png')
+    print('plot.py: saving score.png', file=sys.stderr)
+    plt.savefig('score.png')
