@@ -43,6 +43,7 @@ if __name__ == "__main__":
     _ = plt.title('Run time (max_entry=%d | eps=%s)' % (max_entry, str(eps)))
     print('plot.py: saving time.png', file=sys.stderr)
     plt.savefig('time.png')
+    plt.close()
     
     # --
     # Plot accuracy
@@ -58,3 +59,4 @@ if __name__ == "__main__":
     _ = plt.title('Score (max_entry=%d | eps=%s)' % (max_entry, str(eps)))
     print('plot.py: saving score.png', file=sys.stderr)
     plt.savefig('score.png')
+    plt.close()
