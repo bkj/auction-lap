@@ -36,6 +36,12 @@ optional arguments:
 
 See `./run.sh` for examples.
 
+##### Results
+
+![100-exact-time](imgs/time-100-exact.png)
+![1000-approx-time](imgs/time-1000.png)
+![1000-approx-score](imgs/score-1000.png)
+
 ##### To Do
 
  - Would this give any speedups?
