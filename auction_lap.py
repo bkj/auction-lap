@@ -9,14 +9,14 @@
 
 from __future__ import print_function, division
 
+import sys
 import torch
 
-def auction_lap(X, eps=None):
+def auction_lap(X, eps=None, compute_score=True):
     """
         X: n-by-n matrix w/ integer entries
         eps: "bid size" -- smaller values means higher accuracy w/ longer runtime
     """
-    
     eps = 1 / X.shape[0] if eps is None else eps
     
     # --
@@ -29,7 +29,9 @@ def auction_lap(X, eps=None):
     if X.is_cuda:
         cost, curr_ass, bids = cost.cuda(), curr_ass.cuda(), bids.cuda()
     
+    counter = 0
     while (curr_ass == -1).any():
+        counter += 1
         
         # --
         # Bidding
@@ -55,7 +57,7 @@ def auction_lap(X, eps=None):
         # --
         # Assignment
         
-        have_bidder = (bids_ > 0).sum(dim=0).nonzero()
+        have_bidder = (bids_ > 0).any(dim=0).nonzero()
         
         high_bids, high_bidders = bids_[:,have_bidder].max(dim=0)
         high_bidders = unassigned[high_bidders.squeeze()]
@@ -65,5 +67,8 @@ def auction_lap(X, eps=None):
         curr_ass[(curr_ass.view(-1, 1) == have_bidder.view(1, -1)).sum(dim=1)] = -1
         curr_ass[high_bidders] = have_bidder.squeeze()
     
-    score = int(X.gather(dim=1, index=curr_ass.view(-1, 1)).sum())
-    return score, curr_ass
+    score = None
+    if compute_score:
+        score = int(X.gather(dim=1, index=curr_ass.view(-1, 1)).sum())
+    
+    return score, curr_ass, counter

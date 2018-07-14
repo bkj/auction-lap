@@ -54,7 +54,7 @@ if __name__ == '__main__':
         Xt_gpu = Xt_cpu.cuda()
         
         # t = time()
-        # auc_cpu_score, auc_cpu_ass = auction_lap(Xt_cpu, eps=args.eps) # Score is accurate to within n * eps
+        auc_cpu_score, auc_cpu_ass, _ = auction_lap(Xt_cpu, eps=None) # Score is accurate to within n * eps
         # auc_cpu_time = time() - t
         
         t = time()
