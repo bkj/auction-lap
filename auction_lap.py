@@ -57,7 +57,7 @@ def auction_lap(X, eps=None, compute_score=True):
         # --
         # Assignment
         
-        have_bidder = (bids_ > 0).any(dim=0).nonzero()
+        have_bidder = (bids_ > 0).int().sum(dim=0).nonzero()
         
         high_bids, high_bidders = bids_[:,have_bidder].max(dim=0)
         high_bidders = unassigned[high_bidders.squeeze()]
