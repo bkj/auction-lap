@@ -6,6 +6,8 @@ Runtime scales w/
  - the dimension of the matrix
  - the range of entries in the matrix (max value - min value)
 
+__Note:__ [cuda_auction](https://github.com/bkj/cuda_auction) is a lower-level CUDA implementation of the same algorithm.
+
 ##### Installation
 
 ```
