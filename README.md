@@ -7,6 +7,7 @@ Runtime scales w/
  - the range of entries in the matrix (max value - min value)
 
 __Note:__ [cuda_auction](https://github.com/bkj/cuda_auction) is a lower-level CUDA implementation of the same algorithm.
+__Note:__ [numba_auction](https://github.com/bkj/numba_auction) is a numba implementation of the same algorithm.
 
 ##### Installation
 
